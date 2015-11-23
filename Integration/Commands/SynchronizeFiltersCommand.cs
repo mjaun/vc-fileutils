@@ -1,26 +1,22 @@
 ﻿using EnvDTE;
 using FilterSynchronizer.Helpers;
-using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.VCProjectEngine;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FilterSynchronizer.Integration.Commands
 {
-    class SetProjectRootCommand : BaseCommand
+    class SynchronizeFiltersCommand : BaseCommand
     {
         #region Constructors
 
-        public SetProjectRootCommand(FilterSynchronizerPackage package)
-            : base(package, new CommandID(GuidList.GuidFilterSynchronizerCommandSet, (int)PkgCmdIDList.CmdIDSetProjectRoot))
+        public SynchronizeFiltersCommand(FilterSynchronizerPackage package)
+            : base(package, new CommandID(GuidList.GuidFilterSynchronizerCommandSet, (int)PkgCmdIDList.CmdIDSynchronizeFilters))
         {
-
         }
 
         #endregion
@@ -34,16 +30,7 @@ namespace FilterSynchronizer.Integration.Commands
 
         protected override void OnExecute()
         {
-            Project project = SolutionHelper.GetProjectOfSelection(Package);
-
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
-            dlg.SelectedPath = Path.GetDirectoryName(project.FullName);
-            dlg.ShowNewFolderButton = false;
-
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                
-            }
+            VCProject project = SolutionHelper.GetProjectOfSelection(Package).Object as VCProject;
         }
 
         #endregion BaseCommand Members

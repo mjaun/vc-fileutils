@@ -52,6 +52,15 @@
         <CommandFlag>DefaultInvisible</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
+          <ButtonText>Synchronize Filters</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="GuidFilterSynchronizerCommandSet" id="CmdIDSetProjectRoot" priority="0x0200" type="Button">
+        <Parent guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroupConfig" />
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
           <ButtonText>Set Project &amp;Root...</ButtonText>
         </Strings>
       </Button>
@@ -68,8 +77,9 @@
       <IDSymbol name="GroupIDContextSubGroupConfig" value="0x1030" />
 
       <IDSymbol name="CmdIDSetProjectRoot" value="0x2000" />
-      <IDSymbol name="CmdIDAddFiles" value="0x2010" />
-      <IDSymbol name="CmdIDAddFolder" value="0x2020" />
+      <IDSymbol name="CmdIDSynchronizeFilters" value="0x2010" />
+      <IDSymbol name="CmdIDAddFiles" value="0x2020" />
+      <IDSymbol name="CmdIDAddFolder" value="0x2030" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

@@ -55,11 +55,23 @@
     <Compile Include="FilterSynchronizerPackage.cs" />
     <Compile Include="Helpers\SolutionHelper.cs" />
     <Compile Include="Helpers\UIHierarchyHelper.cs" />
+    <Compile Include="Logic\ContainerExtensions.cs" />
+    <Compile Include="Logic\FileExtensions.cs" />
+    <Compile Include="Logic\FilterSynchronizer.cs" />
+    <Compile Include="Logic\ItemExtensions.cs" />
+    <Compile Include="Logic\ProjectExtensions.cs" />
+    <Compile Include="Model\VCContainerWrapper.cs" />
+    <Compile Include="Model\VCFileWrapper.cs" />
+    <Compile Include="Model\VCFilterWrapper.cs" />
+    <Compile Include="Model\VCProjectWrapper.cs" />
     <Compile Include="Integration\Commands\BaseCommand.cs" />
     <Compile Include="Integration\Commands\SetProjectRootCommand.cs" />
+    <Compile Include="Integration\Commands\SynchronizeFiltersCommand.cs" />
     <Compile Include="Integration\GuidList.cs" />
     <Compile Include="Integration\PkgCmdIDList.cs" />
+    <Compile Include="Model\VCItemWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\ProjectSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

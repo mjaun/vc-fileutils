@@ -22,23 +22,6 @@ using FilterSynchronizer.Integration.Commands;
 
 namespace FilterSynchronizer
 {
-    /// <summary>
-    /// This is the class that implements the package exposed by this assembly.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// The minimum requirement for a class to be considered a valid package for Visual Studio
-    /// is to implement the IVsPackage interface and register itself with the shell.
-    /// This package uses the helper classes defined inside the Managed Package Framework (MPF)
-    /// to do it: it derives from the Package class that provides the implementation of the
-    /// IVsPackage interface and uses the registration attributes defined in the framework to
-    /// register itself and its components with the shell. These attributes tell the pkgdef creation
-    /// utility what data to put into .pkgdef file.
-    /// </para>
-    /// <para>
-    /// To get loaded into VS, the package must be referred by &lt;Asset Type="Microsoft.VisualStudio.VsPackage" ...&gt; in .vsixmanifest file.
-    /// </para>
-    /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
@@ -48,18 +31,13 @@ namespace FilterSynchronizer
     {
         #region Fields
 
-        /// <summary>
-        /// The top level application instance of the VS IDE that is executing this package.
-        /// </summary>
         private DTE2 _ide;
+        private OleMenuCommandService _menuCommandService;
 
         #endregion
 
         #region Constructors
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FilterSynchronizer"/> class.
-        /// </summary>
         public FilterSynchronizerPackage()
         {
             // Inside this method you can place any initialization code that does not require
@@ -72,24 +50,14 @@ namespace FilterSynchronizer
 
         #region Public Integration Properties
 
-        /// <summary>
-        /// Gets the top level application instance of the VS IDE that is executing this package.
-        /// </summary>
         public DTE2 IDE => _ide ?? (_ide = GetService(typeof(SApplicationObject)) as DTE2);
 
-        /// <summary>
-        /// Gets the menu command service.
-        /// </summary>
-        public OleMenuCommandService MenuCommandService => GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
+        public OleMenuCommandService MenuCommandService => _menuCommandService ?? (_menuCommandService = GetService(typeof(IMenuCommandService)) as OleMenuCommandService);
 
         #endregion
 
         #region Package Members
 
-        /// <summary>
-        /// Initialization of the package; this method is called right after the package is sited, so this is the place
-        /// where you can put all the initialization code that rely on services provided by VisualStudio.
-        /// </summary>
         protected override void Initialize()
         {
             base.Initialize();
@@ -101,9 +69,6 @@ namespace FilterSynchronizer
 
         #region Private Methods
 
-        /// <summary>
-        /// Register the package commands (which must exist in the .vsct file).
-        /// </summary>
         private void RegisterCommands()
         {
             var menuCommandService = MenuCommandService;

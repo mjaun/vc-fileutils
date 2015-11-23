@@ -9,17 +9,9 @@ using System.Threading.Tasks;
 
 namespace FilterSynchronizer.Helpers
 {
-    /// <summary>
-    /// A static helper class for working with the solution.
-    /// </summary>
-    internal static class SolutionHelper
+    static class SolutionHelper
     {
-        /// <summary>
-        /// Returns the selected project items.
-        /// </summary>
-        /// <param name="package"></param>
-        /// <returns>The selected project items.</returns>
-        internal static IEnumerable<ProjectItem> GetSelectedProjectItems(FilterSynchronizerPackage package)
+        public static IEnumerable<ProjectItem> GetSelectedProjectItems(FilterSynchronizerPackage package)
         {
             return UIHierarchyHelper.GetSelectedUIHierarchyItems(package)
                 .Select(item => item.Object)
@@ -27,12 +19,7 @@ namespace FilterSynchronizer.Helpers
                 .Cast<ProjectItem>();
         }
 
-        /// <summary>
-        /// Returns the selected projects.
-        /// </summary>
-        /// <param name="package"></param>
-        /// <returns>The selected projects.</returns>
-        internal static IEnumerable<Project> GetSelectedProjects(FilterSynchronizerPackage package)
+        public static IEnumerable<Project> GetSelectedProjects(FilterSynchronizerPackage package)
         {
             return UIHierarchyHelper.GetSelectedUIHierarchyItems(package)
                 .Select(item => item.Object)
@@ -40,13 +27,7 @@ namespace FilterSynchronizer.Helpers
                 .Cast<Project>();
         }
 
-        /// <summary>
-        /// Returns the project of the selected project items. Returns null, if there
-        /// are no items selected or if the selected items belong to different projects.
-        /// </summary>
-        /// <param name="package">The hosting package.</param>
-        /// <returns>The project of the selected project items.</returns>
-        internal static Project GetProjectOfSelection(FilterSynchronizerPackage package)
+        public static Project GetProjectOfSelection(FilterSynchronizerPackage package)
         {
             var containingProjects = new List<Project>();
             containingProjects.AddRange(GetSelectedProjects(package));
