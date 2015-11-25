@@ -62,5 +62,42 @@ namespace FilterSynchronizer.Model
 
             throw new KeyNotFoundException();
         }
+
+        public VCContainerWrapper CreateFilterPath(string path)
+        {
+            return CreateFilterPath(path.Split('/', '\\'));
+        }
+
+        public VCContainerWrapper CreateFilterPath(string[] path)
+        {
+            if (path.Length == 0)
+                return this;
+
+            string nextName = path[0];
+
+            if (String.IsNullOrEmpty(nextName))
+                throw new ArgumentException("path");
+
+            VCFilterWrapper nextFilter = GetFilter(nextName, true);
+            string[] nextPath = path.Skip(1).ToArray();
+            return nextFilter.CreateFilterPath(nextPath);
+        }
+
+        public IEnumerable<VCFileWrapper> GetFilesRecursive()
+        {
+            var files = new List<VCFileWrapper>();
+            GetFilesRecursive(files);
+            return files;
+        }
+
+        private void GetFilesRecursive(List<VCFileWrapper> files)
+        {
+            files.AddRange(Files);
+
+            foreach (VCContainerWrapper child in Filters)
+            {
+                child.GetFilesRecursive(files);
+            }
+        }
     }
 }

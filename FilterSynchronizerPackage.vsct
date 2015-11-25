@@ -5,59 +5,39 @@
 
   <Commands package="GuidFilterSynchronizerPackage">
     <Groups>
-      <Group guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextGroupMain" priority="0x0300">
+      <Group guid="GuidFilterSynchronizerCommandSet" id="GroupIDFilterUtils" priority="0x0300">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
-      <Group guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextGroupMain" priority="0x0100">
+      <Group guid="GuidFilterSynchronizerCommandSet" id="GroupIDFilterUtils" priority="0x0100">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
 
-      <Group guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroupAdd" priority="0x0100">
-        <Parent guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroup"/>
-      </Group>
-      <Group guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroupConfig" priority="0x0200">
-        <Parent guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroup"/>
+      <Group guid="GuidFilterSynchronizerCommandSet" id="SubGroupIDFilterUtilsMain" priority="0x0100">
+        <Parent guid="GuidFilterSynchronizerCommandSet" id="SubGroupIDFilterUtils"/>
       </Group>
     </Groups>
 
     <Menus>
-      <Menu guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroup" priority="0x0100" type="Menu">
-        <Parent guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextGroupMain"/>
+      <Menu guid="GuidFilterSynchronizerCommandSet" id="SubGroupIDFilterUtils" priority="0x0100" type="Menu">
+        <Parent guid="GuidFilterSynchronizerCommandSet" id="GroupIDFilterUtils"/>
         <Strings>
-          <ButtonText>Filter &amp;Synchronizer</ButtonText>
+          <ButtonText>Filter &amp;Utils</ButtonText>
         </Strings>
       </Menu>
     </Menus>   
     
     <Buttons>
-      <Button guid="GuidFilterSynchronizerCommandSet" id="CmdIDAddFiles" priority="0x0100" type="Button">
-        <Parent guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroupAdd" />
+      <Button guid="GuidFilterSynchronizerCommandSet" id="CmdIDSyncWithFileSystem" priority="0x0100" type="Button">
+        <Parent guid="GuidFilterSynchronizerCommandSet" id="SubGroupIDFilterUtils" />
         <CommandFlag>DefaultInvisible</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Add F&amp;iles...</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="GuidFilterSynchronizerCommandSet" id="CmdIDAddFolder" priority="0x0200" type="Button">
-        <Parent guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroupAdd" />
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Add F&amp;older...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="GuidFilterSynchronizerCommandSet" id="CmdIDSetProjectRoot" priority="0x0100" type="Button">
-        <Parent guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroupConfig" />
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Synchronize Filters</ButtonText>
+          <ButtonText>Sync with File System</ButtonText>
         </Strings>
       </Button>
       
       <Button guid="GuidFilterSynchronizerCommandSet" id="CmdIDSetProjectRoot" priority="0x0200" type="Button">
-        <Parent guid="GuidFilterSynchronizerCommandSet" id="GroupIDContextSubGroupConfig" />
+        <Parent guid="GuidFilterSynchronizerCommandSet" id="SubGroupIDFilterUtils" />
         <CommandFlag>DefaultInvisible</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
@@ -71,15 +51,12 @@
     <GuidSymbol name="GuidFilterSynchronizerPackage" value="{AD0E4393-9BAE-4B79-81A3-9E648613264C}" />
 
     <GuidSymbol name="GuidFilterSynchronizerCommandSet" value="{E35CFF27-48F1-4606-99A6-678C89456042}">
-      <IDSymbol name="GroupIDContextGroupMain" value="0x1000" />
-      <IDSymbol name="GroupIDContextSubGroup" value="0x1010" />
-      <IDSymbol name="GroupIDContextSubGroupAdd" value="0x1020" />
-      <IDSymbol name="GroupIDContextSubGroupConfig" value="0x1030" />
+      <IDSymbol name="GroupIDFilterUtils" value="0x1000" />
+      <IDSymbol name="SubGroupIDFilterUtils" value="0x1010" />
+      <IDSymbol name="SubGroupIDFilterUtilsMain" value="0x1020" />
 
       <IDSymbol name="CmdIDSetProjectRoot" value="0x2000" />
-      <IDSymbol name="CmdIDSynchronizeFilters" value="0x2010" />
-      <IDSymbol name="CmdIDAddFiles" value="0x2020" />
-      <IDSymbol name="CmdIDAddFolder" value="0x2030" />
+      <IDSymbol name="CmdIDSyncWithFileSystem" value="0x2010" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

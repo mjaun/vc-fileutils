@@ -16,5 +16,17 @@ namespace FilterSynchronizer.Model
         protected VCFile File => (VCFile)Item;
 
         public string FullPath => File.FullPath;
+
+        public string RelativePath
+        {
+            get
+            {
+                string path = FullPath;
+                string root = ContainingProject.ProjectRoot;
+
+                Uri uri = new Uri(root);
+                return uri.MakeRelativeUri(new Uri(path)).ToString();
+            }
+        }
     }
 }

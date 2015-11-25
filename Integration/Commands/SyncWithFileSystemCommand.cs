@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace FilterSynchronizer.Integration.Commands
 {
-    class SynchronizeFiltersCommand : BaseCommand
+    class SyncWithFileSystemCommand : BaseCommand
     {
         #region Constructors
 
-        public SynchronizeFiltersCommand(FilterSynchronizerPackage package)
-            : base(package, new CommandID(GuidList.GuidFilterSynchronizerCommandSet, (int)PkgCmdIDList.CmdIDSynchronizeFilters))
+        public SyncWithFileSystemCommand(FilterSynchronizerPackage package)
+            : base(package, new CommandID(GuidList.GuidFilterSynchronizerCommandSet, (int)PkgCmdIDList.CmdIDSyncWithFileSystem))
         {
         }
 

@@ -36,5 +36,16 @@ namespace FilterSynchronizer.Model
                 throw new NotSupportedException();
             }
         }
+
+        public string FilterPath
+        {
+            get
+            {
+                if (this is VCProjectWrapper)
+                    return "";
+                else
+                    return Parent.FilterPath + "/" + Name;
+            }
+        }
     }
 }

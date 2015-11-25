@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.VCProjectEngine;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,14 @@ namespace FilterSynchronizer.Model
         protected override bool _CanAddFilter(string name)
         {
             return Project.CanAddFilter(name);
+        }
+
+        public string ProjectRoot
+        {
+            get
+            {
+                return Path.GetDirectoryName(ProjectFile);
+            }
         }
     }
 }

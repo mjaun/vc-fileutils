@@ -75,6 +75,7 @@ namespace FilterSynchronizer
 
             if (menuCommandService != null)
             {
+                menuCommandService.AddCommand(new SyncWithFileSystemCommand(this));
                 menuCommandService.AddCommand(new SetProjectRootCommand(this));
             }
         }
