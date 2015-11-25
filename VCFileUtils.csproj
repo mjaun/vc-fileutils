@@ -52,6 +52,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ExtensionSettings.cs" />
+    <Compile Include="Helpers\SettingsManager.cs" />
     <Compile Include="VCFileUtilsPackage.cs" />
     <Compile Include="Helpers\SolutionHelper.cs" />
     <Compile Include="Logic\FilterUtils.cs" />
@@ -68,7 +70,6 @@
     <Compile Include="Integration\PkgCmdIDList.cs" />
     <Compile Include="Model\VCProjectItemWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\ProjectSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

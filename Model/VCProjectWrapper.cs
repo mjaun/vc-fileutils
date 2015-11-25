@@ -24,13 +24,5 @@ namespace VCFileUtils.Model
 
             return (VCFilter)Project.AddFilter(name);
         }
-
-        public string ProjectRoot
-        {
-            get
-            {
-                return Path.GetDirectoryName(ProjectFile);
-            }
-        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.VCProjectEngine;
 using System;
+using VCFileUtils.Helpers;
 
 namespace VCFileUtils.Model
 {
@@ -19,7 +20,7 @@ namespace VCFileUtils.Model
             get
             {
                 string path = FullPath;
-                string root = ContainingProject.ProjectRoot + "\\";
+                string root = SettingsManager.GetSettings(ContainingProject).ProjectRoot + "\\";
 
                 Uri uri = new Uri(root);
                 return uri.MakeRelativeUri(new Uri(path)).ToString();

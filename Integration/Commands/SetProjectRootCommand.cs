@@ -36,7 +36,9 @@ namespace VCFileUtils.Integration.Commands
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                
+                ExtensionSettings settings = SettingsManager.GetSettings(project);
+                settings.ProjectRoot = dlg.SelectedPath;
+                SettingsManager.SaveSettings(project);
             }
         }
 
