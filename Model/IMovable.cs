@@ -1,4 +1,4 @@
-﻿namespace FilterSynchronizer.Model
+﻿namespace VCFileUtils.Model
 {
     interface IMovable
     {

@@ -1,17 +1,17 @@
-﻿using FilterSynchronizer.Helpers;
-using FilterSynchronizer.Model;
+﻿using VCFileUtils.Helpers;
+using VCFileUtils.Model;
 using System.ComponentModel.Design;
 using System.IO;
 using System.Windows.Forms;
 
-namespace FilterSynchronizer.Integration.Commands
+namespace VCFileUtils.Integration.Commands
 {
     class SetProjectRootCommand : BaseCommand
     {
         #region Constructors
 
-        public SetProjectRootCommand(FilterSynchronizerPackage package)
-            : base(package, new CommandID(GuidList.GuidFilterSynchronizerCommandSet, (int)PkgCmdIDList.CmdIDSetProjectRoot))
+        public SetProjectRootCommand(VCFileUtilsPackage package)
+            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDSetProjectRoot))
         {
 
         }

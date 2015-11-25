@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FilterSynchronizer.Settings
+namespace VCFileUtils.Settings
 {
     internal class ProjectSettings
     {

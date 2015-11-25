@@ -1,4 +1,4 @@
-﻿namespace FilterSynchronizer.Integration
+﻿namespace VCFileUtils.Integration
 {
     public static class PkgCmdIDList
     {

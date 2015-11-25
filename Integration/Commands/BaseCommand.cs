@@ -2,13 +2,13 @@
 using System;
 using System.ComponentModel.Design;
 
-namespace FilterSynchronizer.Integration.Commands
+namespace VCFileUtils.Integration.Commands
 {
     abstract class BaseCommand : OleMenuCommand
     {
         #region Constructors
 
-        protected BaseCommand(FilterSynchronizerPackage package, CommandID id)
+        protected BaseCommand(VCFileUtilsPackage package, CommandID id)
             : base(BaseCommand_Execute, id)
         {
             Package = package;
@@ -20,7 +20,7 @@ namespace FilterSynchronizer.Integration.Commands
 
         #region Properties
 
-        protected FilterSynchronizerPackage Package { get; private set; }
+        protected VCFileUtilsPackage Package { get; private set; }
 
         #endregion Properties
 

@@ -1,18 +1,18 @@
-﻿using FilterSynchronizer.Helpers;
-using FilterSynchronizer.Logic;
-using FilterSynchronizer.Model;
+﻿using VCFileUtils.Helpers;
+using VCFileUtils.Logic;
+using VCFileUtils.Model;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
 
-namespace FilterSynchronizer.Integration.Commands
+namespace VCFileUtils.Integration.Commands
 {
     class SyncWithFileSystemCommand : BaseCommand
     {
         #region Constructors
 
-        public SyncWithFileSystemCommand(FilterSynchronizerPackage package)
-            : base(package, new CommandID(GuidList.GuidFilterSynchronizerCommandSet, (int)PkgCmdIDList.CmdIDSyncWithFileSystem))
+        public SyncWithFileSystemCommand(VCFileUtilsPackage package)
+            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDSyncWithFileSystem))
         {
         }
 

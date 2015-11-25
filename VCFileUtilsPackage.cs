@@ -1,26 +1,26 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="FilterSynchronizerPackage.cs" company="Company">
+// <copyright file="VCFileUtilsPackage.cs" company="Company">
 //     Copyright (c) Company.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
 
 using EnvDTE80;
-using FilterSynchronizer.Integration;
-using FilterSynchronizer.Integration.Commands;
+using VCFileUtils.Integration;
+using VCFileUtils.Integration.Commands;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 
-namespace FilterSynchronizer
+namespace VCFileUtils
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [Guid(GuidList.GuidFilterSynchronizerPackageString)]
-    public sealed class FilterSynchronizerPackage : Package
+    [Guid(GuidList.GuidVCFileUtilsPackageString)]
+    public sealed class VCFileUtilsPackage : Package
     {
         #region Fields
 
@@ -31,7 +31,7 @@ namespace FilterSynchronizer
 
         #region Constructors
 
-        public FilterSynchronizerPackage()
+        public VCFileUtilsPackage()
         {
             // Inside this method you can place any initialization code that does not require
             // any Visual Studio service because at this point the package object is created but

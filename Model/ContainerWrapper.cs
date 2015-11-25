@@ -1,9 +1,8 @@
 ﻿using Microsoft.VisualStudio.VCProjectEngine;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FilterSynchronizer.Model
+namespace VCFileUtils.Model
 {
     abstract class ContainerWrapper : VCProjectItemWrapper
     {

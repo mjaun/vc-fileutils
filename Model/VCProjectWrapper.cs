@@ -2,7 +2,7 @@
 using System.IO;
 using System;
 
-namespace FilterSynchronizer.Model
+namespace VCFileUtils.Model
 {
     internal class VCProjectWrapper : ContainerWrapper
     {

@@ -1,8 +1,8 @@
-﻿using FilterSynchronizer.Model;
+﻿using VCFileUtils.Model;
 using System;
 using System.IO;
 
-namespace FilterSynchronizer.Logic
+namespace VCFileUtils.Logic
 {
     static class FilterUtils
     {

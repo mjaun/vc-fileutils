@@ -1,14 +1,14 @@
 ﻿using EnvDTE;
-using FilterSynchronizer.Model;
+using VCFileUtils.Model;
 using Microsoft.VisualStudio.VCProjectEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FilterSynchronizer.Helpers
+namespace VCFileUtils.Helpers
 {
     static class SolutionHelper
     {
-        public static IEnumerable<VCProjectItemWrapper> GetSelectedItems(FilterSynchronizerPackage package)
+        public static IEnumerable<VCProjectItemWrapper> GetSelectedItems(VCFileUtilsPackage package)
         {
             return GetSelectedUIHierarchyItems(package)
                 .Where(item => item.Object is ProjectItem)
@@ -17,14 +17,14 @@ namespace FilterSynchronizer.Helpers
                 .Select(item => WrapperFactory.FromVCProjectItem(item.Object as VCProjectItem));
         }
 
-        public static IEnumerable<VCProjectWrapper> GetSelectedProjects(FilterSynchronizerPackage package)
+        public static IEnumerable<VCProjectWrapper> GetSelectedProjects(VCFileUtilsPackage package)
         {
             return GetSelectedItems(package)
                 .Where(item => item is VCProjectWrapper)
                 .Cast<VCProjectWrapper>();
         }
 
-        public static VCProjectWrapper GetProjectOfSelection(FilterSynchronizerPackage package)
+        public static VCProjectWrapper GetProjectOfSelection(VCFileUtilsPackage package)
         {
             var containingProjects = new List<VCProjectWrapper>();
             containingProjects.AddRange(GetSelectedItems(package).Select(item => item.ContainingProject));
@@ -38,12 +38,12 @@ namespace FilterSynchronizer.Helpers
             return containingProjects[0];
         }
 
-        private static UIHierarchy GetSolutionExplorer(FilterSynchronizerPackage package)
+        private static UIHierarchy GetSolutionExplorer(VCFileUtilsPackage package)
         {
             return package.IDE.ToolWindows.SolutionExplorer;
         }
 
-        private static IEnumerable<UIHierarchyItem> GetSelectedUIHierarchyItems(FilterSynchronizerPackage package)
+        private static IEnumerable<UIHierarchyItem> GetSelectedUIHierarchyItems(VCFileUtilsPackage package)
         {
             return ((object[])GetSolutionExplorer(package).SelectedItems)
                 .Cast<UIHierarchyItem>();

@@ -24,8 +24,8 @@
     <ProjectGuid>{855029FB-EB06-4175-B164-111C13A727C6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FilterSynchronizer</RootNamespace>
-    <AssemblyName>FilterSynchronizer</AssemblyName>
+    <RootNamespace>VCFileUtils</RootNamespace>
+    <AssemblyName>VCFileUtils</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="FilterSynchronizerPackage.cs" />
+    <Compile Include="VCFileUtilsPackage.cs" />
     <Compile Include="Helpers\SolutionHelper.cs" />
     <Compile Include="Logic\FilterUtils.cs" />
     <Compile Include="Model\IMovable.cs" />
@@ -77,10 +77,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <VSCTCompile Include="FilterSynchronizerPackage.vsct">
+    <VSCTCompile Include="VCFileUtilsPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
-    <Content Include="Resources\FilterSynchronizerPackage.ico" />
+    <Content Include="Resources\VCFileUtilsPackage.ico" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -192,6 +192,7 @@
     <EmbeddedResource Include="VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

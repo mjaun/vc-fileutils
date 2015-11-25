@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.VCProjectEngine;
 using System;
 
-namespace FilterSynchronizer.Model
+namespace VCFileUtils.Model
 {
     abstract class VCProjectItemWrapper
     {
