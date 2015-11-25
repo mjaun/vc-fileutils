@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FilterSynchronizer.Model
 {
-    abstract class VCContainerWrapper : VCItemWrapper
+    abstract class ContainerWrapper : VCProjectItemWrapper
     {
-        protected VCContainerWrapper(VCProjectItem obj) : base(obj)
+        protected ContainerWrapper(VCProjectItem obj) : base(obj)
         {
         }
 
@@ -17,7 +15,6 @@ namespace FilterSynchronizer.Model
         protected abstract dynamic _Filters { get; }
 
         protected abstract VCFilter _AddFilter(string name);
-        protected abstract bool _CanAddFilter(string name);
 
         public IEnumerable<VCFileWrapper> Files
         {
@@ -41,11 +38,6 @@ namespace FilterSynchronizer.Model
 
         public VCFilterWrapper AddFilter(string name)
         {
-            if (!_CanAddFilter(name))
-            {
-                throw new ArgumentException();
-            }
-
             return new VCFilterWrapper(_AddFilter(name));
         }
 
@@ -63,24 +55,22 @@ namespace FilterSynchronizer.Model
             throw new KeyNotFoundException();
         }
 
-        public VCContainerWrapper CreateFilterPath(string path)
+        public VCFilterWrapper CreateFilterPath(string path)
         {
             return CreateFilterPath(path.Split('/', '\\'));
         }
 
-        public VCContainerWrapper CreateFilterPath(string[] path)
+        public VCFilterWrapper CreateFilterPath(string[] path)
         {
-            if (path.Length == 0)
-                return this;
-
             string nextName = path[0];
-
-            if (String.IsNullOrEmpty(nextName))
-                throw new ArgumentException("path");
 
             VCFilterWrapper nextFilter = GetFilter(nextName, true);
             string[] nextPath = path.Skip(1).ToArray();
-            return nextFilter.CreateFilterPath(nextPath);
+
+            if (nextPath.Length == 0)
+                return nextFilter;
+            else
+                return nextFilter.CreateFilterPath(nextPath);
         }
 
         public IEnumerable<VCFileWrapper> GetFilesRecursive()
@@ -94,7 +84,7 @@ namespace FilterSynchronizer.Model
         {
             files.AddRange(Files);
 
-            foreach (VCContainerWrapper child in Filters)
+            foreach (ContainerWrapper child in Filters)
             {
                 child.GetFilesRecursive(files);
             }

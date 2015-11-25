@@ -4,21 +4,14 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel.Design;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.OLE.Interop;
+using EnvDTE80;
+using FilterSynchronizer.Integration;
+using FilterSynchronizer.Integration.Commands;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.Win32;
-using FilterSynchronizer.Integration;
-using EnvDTE80;
-using EnvDTE;
-using FilterSynchronizer.Integration.Commands;
+using System;
+using System.ComponentModel.Design;
+using System.Runtime.InteropServices;
 
 namespace FilterSynchronizer
 {

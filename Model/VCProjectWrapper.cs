@@ -1,20 +1,16 @@
 ﻿using Microsoft.VisualStudio.VCProjectEngine;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace FilterSynchronizer.Model
 {
-    internal class VCProjectWrapper : VCContainerWrapper
+    internal class VCProjectWrapper : ContainerWrapper
     {
         public VCProjectWrapper(VCProject project) : base(project)
         {
         }
 
-        protected VCProject Project => (VCProject)Item;
+        protected VCProject Project => (VCProject)VCProjectItem;
 
         protected override dynamic _Files => Project.Files;
         protected override dynamic _Filters => Project.Filters;
@@ -23,12 +19,10 @@ namespace FilterSynchronizer.Model
 
         protected override VCFilter _AddFilter(string name)
         {
-            return (VCFilter)Project.AddFilter(name);
-        }
+            if (!Project.CanAddFilter(name))
+                throw new InvalidOperationException();
 
-        protected override bool _CanAddFilter(string name)
-        {
-            return Project.CanAddFilter(name);
+            return (VCFilter)Project.AddFilter(name);
         }
 
         public string ProjectRoot

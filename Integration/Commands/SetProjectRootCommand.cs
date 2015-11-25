@@ -1,14 +1,7 @@
-﻿using EnvDTE;
-using FilterSynchronizer.Helpers;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.VCProjectEngine;
-using System;
-using System.Collections.Generic;
+﻿using FilterSynchronizer.Helpers;
+using FilterSynchronizer.Model;
 using System.ComponentModel.Design;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FilterSynchronizer.Integration.Commands
@@ -29,15 +22,16 @@ namespace FilterSynchronizer.Integration.Commands
 
         protected override void OnBeforeQueryStatus()
         {
-            Visible = SolutionHelper.GetProjectOfSelection(Package).Object is VCProject;
+            Visible = SolutionHelper.GetProjectOfSelection(Package) != null;
+            Enabled = true;
         }
 
         protected override void OnExecute()
         {
-            Project project = SolutionHelper.GetProjectOfSelection(Package);
+            VCProjectWrapper project = SolutionHelper.GetProjectOfSelection(Package);
 
             FolderBrowserDialog dlg = new FolderBrowserDialog();
-            dlg.SelectedPath = Path.GetDirectoryName(project.FullName);
+            dlg.SelectedPath = Path.GetDirectoryName(project.ProjectFile);
             dlg.ShowNewFolderButton = false;
 
             if (dlg.ShowDialog() == DialogResult.OK)

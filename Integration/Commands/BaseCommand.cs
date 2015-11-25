@@ -1,5 +1,4 @@
-﻿using FilterSynchronizer;
-using Microsoft.VisualStudio.Shell;
+﻿using Microsoft.VisualStudio.Shell;
 using System;
 using System.ComponentModel.Design;
 

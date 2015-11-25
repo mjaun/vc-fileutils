@@ -1,12 +1,9 @@
-﻿using EnvDTE;
-using FilterSynchronizer.Helpers;
-using Microsoft.VisualStudio.VCProjectEngine;
-using System;
+﻿using FilterSynchronizer.Helpers;
+using FilterSynchronizer.Logic;
+using FilterSynchronizer.Model;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FilterSynchronizer.Integration.Commands
 {
@@ -25,12 +22,22 @@ namespace FilterSynchronizer.Integration.Commands
 
         protected override void OnBeforeQueryStatus()
         {
-            Visible = SolutionHelper.GetProjectOfSelection(Package).Object is VCProject;
+            Visible = SolutionHelper.GetSelectedItems(Package).Any();
+            Enabled = true;
         }
 
         protected override void OnExecute()
         {
-            VCProject project = SolutionHelper.GetProjectOfSelection(Package).Object as VCProject;
+            var selection = new List<VCProjectItemWrapper>(SolutionHelper.GetSelectedItems(Package));
+
+            foreach (VCProjectItemWrapper item in selection)
+            {
+                if (item is VCFileWrapper)
+                    FilterUtils.SyncWithFileSystem(item as VCFileWrapper);
+
+                if (item is ContainerWrapper)
+                    FilterUtils.SyncWithFileSystem(item as ContainerWrapper);
+            }
         }
 
         #endregion BaseCommand Members

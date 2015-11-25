@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FilterSynchronizer.Integration
+﻿namespace FilterSynchronizer.Integration
 {
     public static class PkgCmdIDList
     {
