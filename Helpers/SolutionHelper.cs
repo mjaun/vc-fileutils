@@ -14,7 +14,7 @@ namespace FilterSynchronizer.Helpers
                 .Where(item => item.Object is ProjectItem)
                 .Select(item => item.Object as ProjectItem)
                 .Where(item => item.Object is VCProjectItem)
-                .Select(item => WrapperFactory.FromProjectItem(item.Object as VCProjectItem));
+                .Select(item => WrapperFactory.FromVCProjectItem(item.Object as VCProjectItem));
         }
 
         public static IEnumerable<VCProjectWrapper> GetSelectedProjects(FilterSynchronizerPackage package)

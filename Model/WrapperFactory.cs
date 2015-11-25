@@ -5,7 +5,7 @@ namespace FilterSynchronizer.Model
 {
     static class WrapperFactory
     {
-        public static VCProjectItemWrapper FromProjectItem(VCProjectItem item)
+        public static VCProjectItemWrapper FromVCProjectItem(VCProjectItem item)
         {
             if (item is VCFile)
                 return new VCFileWrapper(item as VCFile);

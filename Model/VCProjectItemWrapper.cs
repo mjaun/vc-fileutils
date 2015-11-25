@@ -23,7 +23,7 @@ namespace FilterSynchronizer.Model
                 if (VCProjectItem.Parent == null)
                     return null;
                 else
-                    return WrapperFactory.FromProjectItem(VCProjectItem.Parent);
+                    return WrapperFactory.FromVCProjectItem(VCProjectItem.Parent);
             }
         }
 
