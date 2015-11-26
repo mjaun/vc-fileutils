@@ -33,14 +33,20 @@ namespace VCFileUtils.Model
         }
 
         public string ProjectFile => Project.ProjectFile;
+        public override string FilePath => Project.ProjectFile;
 
-        public string GetRelativePath(string path)
+        public string MakeRelativePath(string absolutePath)
         {
             string root = SettingsManager.GetSettings(this).ProjectRoot + "\\";
 
             Uri uriRoot = new Uri(root);
-            Uri uriPath = new Uri(path);
+            Uri uriPath = new Uri(absolutePath);
             return uriRoot.MakeRelativeUri(uriPath).ToString();
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

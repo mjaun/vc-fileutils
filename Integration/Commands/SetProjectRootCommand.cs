@@ -8,17 +8,11 @@ namespace VCFileUtils.Integration.Commands
 {
     class SetProjectRootCommand : BaseCommand
     {
-        #region Constructors
-
         public SetProjectRootCommand(VCFileUtilsPackage package)
             : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDSetProjectRoot))
         {
 
         }
-
-        #endregion
-
-        #region BaseCommand Members
 
         protected override void OnBeforeQueryStatus()
         {
@@ -41,7 +35,5 @@ namespace VCFileUtils.Integration.Commands
                 SettingsManager.SaveSettings(project);
             }
         }
-
-        #endregion BaseCommand Members
     }
 }

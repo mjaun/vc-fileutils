@@ -13,13 +13,13 @@ namespace VCFileUtils.Model
 
         protected VCFile VCFile => (VCFile)VCProjectItem;
 
-        public string FullPath => VCFile.FullPath;
+        public override string FilePath => VCFile.FullPath;
 
         public string RelativePath
         {
             get
             {
-                return ContainingProject.GetRelativePath(VCFile.FullPath);
+                return ContainingProject.MakeRelativePath(VCFile.FullPath);
             }
         }
 

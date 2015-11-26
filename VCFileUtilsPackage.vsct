@@ -44,6 +44,12 @@
           <ButtonText>&amp;Add Files Organized...</ButtonText>
         </Strings>
       </Button>
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDRemoveEmptyFilters" priority="0x0300" type="Button">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
+        <Strings>
+          <ButtonText>&amp;Remove Empty Filters</ButtonText>
+        </Strings>
+      </Button>
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDSetProjectRoot" priority="0x0100" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsSettings" />
         <Strings>
@@ -78,6 +84,7 @@
       <IDSymbol name="CmdIDOrganizeFiles" value="0x2010" />
       <IDSymbol name="CmdIDAddFilesOrganized" value="0x2020" />
       <IDSymbol name="CmdIDShowInExplorer" value="0x2030" />
+      <IDSymbol name="CmdIDRemoveEmptyFilters" value="0x2040" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

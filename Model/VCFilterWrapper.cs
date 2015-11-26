@@ -13,7 +13,9 @@ namespace VCFileUtils.Model
 
         protected override dynamic _Files => Filter.Files;
         protected override dynamic _Filters => Filter.Filters;
-        
+
+        public override string FilePath => FilterPath;
+
         protected override VCFilter _AddFilter(string name)
         {
             if (!Filter.CanAddFilter(name))

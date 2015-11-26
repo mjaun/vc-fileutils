@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.VCProjectEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace VCFileUtils.Model
 {
@@ -22,7 +23,7 @@ namespace VCFileUtils.Model
             {
                 return ((IVCCollection)_Files)
                     .Cast<VCFile>()
-                    .Where(file => VCProjectItem.Parent == file)
+                    .Where(file => VCProjectItem == file.Parent)
                     .Select(file => new VCFileWrapper(file));
             }
         }
@@ -33,7 +34,7 @@ namespace VCFileUtils.Model
             {
                 return ((IVCCollection)_Filters)
                     .Cast<VCFilter>()
-                    .Where(file => VCProjectItem.Parent == file)
+                    .Where(filter => VCProjectItem == filter.Parent)
                     .Select(filter => new VCFilterWrapper(filter));
             }
         }

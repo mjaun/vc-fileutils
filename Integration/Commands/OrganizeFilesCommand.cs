@@ -9,16 +9,10 @@ namespace VCFileUtils.Integration.Commands
 {
     class OrganizeFilesCommand : BaseCommand
     {
-        #region Constructors
-
         public OrganizeFilesCommand(VCFileUtilsPackage package)
             : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDOrganizeFiles))
         {
         }
-
-        #endregion
-
-        #region BaseCommand Members
 
         protected override void OnBeforeQueryStatus()
         {
@@ -46,7 +40,5 @@ namespace VCFileUtils.Integration.Commands
                 }
             }
         }
-
-        #endregion BaseCommand Members
     }
 }

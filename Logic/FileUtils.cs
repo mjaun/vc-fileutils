@@ -1,6 +1,7 @@
 ﻿using VCFileUtils.Model;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace VCFileUtils.Logic
 {
@@ -23,7 +24,7 @@ namespace VCFileUtils.Logic
 
         public static VCFileWrapper AddFileOrganized(VCProjectWrapper project, string path)
         {
-            string filterPath = project.GetRelativePath(path);
+            string filterPath = project.MakeRelativePath(path);
             VCFilterWrapper parent = project.CreateFilterPath(Path.GetDirectoryName(filterPath));
             return parent.AddFile(path);
         }
@@ -31,9 +32,18 @@ namespace VCFileUtils.Logic
         public static VCFileWrapper ReAddFile(VCFileWrapper file)
         {
             ContainerWrapper parent = file.Parent;
-            string path = file.FullPath;
+            string path = file.FilePath;
             file.Remove();
             return parent.AddFile(path);
+        }
+
+        public static void RemoveEmptyFilters(ContainerWrapper container)
+        {
+            foreach (VCFilterWrapper child in container.Filters)
+                RemoveEmptyFilters(child);
+
+            if (!container.Filters.Any() && !container.Files.Any() && container is VCFilterWrapper)
+                (container as VCFilterWrapper).Remove();
         }
     }
 }

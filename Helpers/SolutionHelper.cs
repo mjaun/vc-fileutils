@@ -3,6 +3,7 @@ using VCFileUtils.Model;
 using Microsoft.VisualStudio.VCProjectEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace VCFileUtils.Helpers
 {
@@ -10,11 +11,19 @@ namespace VCFileUtils.Helpers
     {
         public static IEnumerable<VCProjectItemWrapper> GetSelectedItems(VCFileUtilsPackage package)
         {
-            return GetSelectedUIHierarchyItems(package)
-                .Where(item => item.Object is ProjectItem)
-                .Select(item => item.Object as ProjectItem)
-                .Where(item => item.Object is VCProjectItem)
-                .Select(item => WrapperFactory.FromVCProjectItem(item.Object as VCProjectItem));
+            foreach (UIHierarchyItem item in GetSelectedUIHierarchyItems(package))
+            {
+                VCProjectItem vcProjectItem = null;
+
+                if (item.Object is ProjectItem)
+                    vcProjectItem = (item.Object as ProjectItem).Object as VCProjectItem;
+
+                if (item.Object is Project)
+                    vcProjectItem = (item.Object as Project).Object as VCProjectItem;
+
+                if (vcProjectItem != null)
+                    yield return WrapperFactory.FromVCProjectItem(vcProjectItem);
+            }
         }
 
         public static IEnumerable<VCProjectWrapper> GetSelectedProjects(VCFileUtilsPackage package)
@@ -26,16 +35,35 @@ namespace VCFileUtils.Helpers
 
         public static VCProjectWrapper GetProjectOfSelection(VCFileUtilsPackage package)
         {
-            var containingProjects = new List<VCProjectWrapper>();
-            containingProjects.AddRange(GetSelectedItems(package).Select(item => item.ContainingProject));
+            var projects = GetSelectedItems(package)
+                .Select(item => item.ContainingProject)
+                .ToList();
 
-            if (containingProjects.Count() == 0)
+            if (projects.Count() == 0)
                 return null;
 
-            if (containingProjects.Any(project => !project.Equals(containingProjects[0])))
+            if (projects.Any(project => !project.Equals(projects[0])))
                 return null;
 
-            return containingProjects[0];
+            return projects[0];
+        }
+
+        public static string GetDirectoryOfSelection(VCFileUtilsPackage package)
+        {
+            var directories = GetSelectedItems(package)
+                .Select(item => Path.GetDirectoryName(item.FilePath))
+                .ToList();
+
+            if (directories.Count() == 0)
+                return null;
+
+            if (directories.Any(dir => dir != directories[0]))
+                return null;
+
+            if (!Directory.Exists(directories[0]))
+                return null;
+
+            return directories[0];
         }
 
         private static UIHierarchy GetSolutionExplorer(VCFileUtilsPackage package)

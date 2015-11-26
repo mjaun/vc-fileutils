@@ -27,14 +27,21 @@ namespace VCFileUtils.Model
             }
         }
 
+        public abstract string FilePath { get; }
+
         public string FilterPath
         {
             get
             {
                 if (this is VCProjectWrapper)
                     return "";
+
+                string parentPath = Parent.FilterPath;
+
+                if (!String.IsNullOrEmpty(parentPath))
+                    return parentPath + "/" + Name;
                 else
-                    return Parent.FilterPath + "/" + Name;
+                    return Name;
             }
         }
 

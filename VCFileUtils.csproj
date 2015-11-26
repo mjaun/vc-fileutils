@@ -54,6 +54,9 @@
   <ItemGroup>
     <Compile Include="Helpers\ExtensionSettings.cs" />
     <Compile Include="Helpers\SettingsManager.cs" />
+    <Compile Include="Integration\Commands\AddFilesOrganizedCommand.cs" />
+    <Compile Include="Integration\Commands\RemoveEmptyFiltersCommand.cs" />
+    <Compile Include="Integration\Commands\ShowInExplorerCommand.cs" />
     <Compile Include="VCFileUtilsPackage.cs" />
     <Compile Include="Helpers\SolutionHelper.cs" />
     <Compile Include="Logic\FileUtils.cs" />
