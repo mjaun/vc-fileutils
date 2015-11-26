@@ -57,6 +57,15 @@
     <Compile Include="Integration\Commands\AddFilesOrganizedCommand.cs" />
     <Compile Include="Integration\Commands\RemoveEmptyFiltersCommand.cs" />
     <Compile Include="Integration\Commands\ShowInExplorerCommand.cs" />
+    <Compile Include="UI\AddFilesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AddFilesDialog.Designer.cs">
+      <DependentUpon>AddFilesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FileSystemTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="VCFileUtilsPackage.cs" />
     <Compile Include="Helpers\SolutionHelper.cs" />
     <Compile Include="Logic\FileUtils.cs" />
@@ -193,6 +202,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UI\AddFilesDialog.resx">
+      <DependentUpon>AddFilesDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>

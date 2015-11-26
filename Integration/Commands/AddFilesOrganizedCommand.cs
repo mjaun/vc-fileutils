@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
+﻿using System.ComponentModel.Design;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 using VCFileUtils.Helpers;
+using VCFileUtils.Logic;
+using VCFileUtils.Model;
+using VCFileUtils.UI;
 
 namespace VCFileUtils.Integration.Commands
 {
@@ -17,14 +18,30 @@ namespace VCFileUtils.Integration.Commands
 
         protected override void OnBeforeQueryStatus()
         {
-            Visible = false;
-            //Visible = SolutionHelper.GetSelectedItems(Package).Any();
-            //Enabled = SolutionHelper.GetDirectoryOfSelection(Package) != null;
+            Visible = SolutionHelper.GetSelectedItems(Package).Any();
+            Enabled = SolutionHelper.GetSelectedDirectory(Package) != null;
         }
 
         protected override void OnExecute()
         {
+            var dlg = new AddFilesDialog();
+            dlg.RootPath = SolutionHelper.GetSelectedDirectory(Package);
+            var project = SolutionHelper.GetProjectOfSelection(Package);
 
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                foreach (string path in dlg.SelectedFiles)
+                {
+                    try
+                    {
+                        FileUtils.AddFileOrganized(project, path);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error: Could not add file " + path + "!", "VC File Utils", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

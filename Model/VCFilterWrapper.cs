@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.VCProjectEngine;
 using System;
+using System.IO;
+using VCFileUtils.Helpers;
 
 namespace VCFileUtils.Model
 {
@@ -14,7 +16,7 @@ namespace VCFileUtils.Model
         protected override dynamic _Files => Filter.Files;
         protected override dynamic _Filters => Filter.Filters;
 
-        public override string FilePath => FilterPath;
+        public override string FilePath => Path.Combine(SettingsManager.GetSettings(ContainingProject).ProjectRoot, FilterPath);
 
         protected override VCFilter _AddFilter(string name)
         {

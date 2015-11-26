@@ -66,6 +66,23 @@ namespace VCFileUtils.Helpers
             return directories[0];
         }
 
+        public static string GetSelectedDirectory(VCFileUtilsPackage package)
+        {
+            var selection = GetSelectedItems(package)
+                .ToList();
+
+            if (selection.Count() != 1)
+                return null;
+
+            if (selection[0] is VCProjectWrapper)
+                return SettingsManager.GetSettings(selection[0] as VCProjectWrapper).ProjectRoot;
+
+            if (selection[0] is VCFilterWrapper)
+                return selection[0].FilePath;
+
+            return null;
+        }
+
         private static UIHierarchy GetSolutionExplorer(VCFileUtilsPackage package)
         {
             return package.IDE.ToolWindows.SolutionExplorer;
