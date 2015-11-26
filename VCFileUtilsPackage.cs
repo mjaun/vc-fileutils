@@ -68,7 +68,7 @@ namespace VCFileUtils
 
             if (menuCommandService != null)
             {
-                menuCommandService.AddCommand(new SyncWithFileSystemCommand(this));
+                menuCommandService.AddCommand(new OrganizeFilesCommand(this));
                 menuCommandService.AddCommand(new SetProjectRootCommand(this));
             }
         }

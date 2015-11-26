@@ -22,6 +22,14 @@ namespace VCFileUtils.Model
             return (VCFilter)Filter.AddFilter(name);
         }
 
+        protected override VCFile _AddFile(string path)
+        {
+            if (!Filter.CanAddFile(path))
+                throw new InvalidOperationException();
+
+            return (VCFile)Filter.AddFile(path);
+        }
+
         public void Move(ContainerWrapper newParent)
         {
             if (!Filter.CanMove(newParent))

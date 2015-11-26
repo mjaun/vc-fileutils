@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace VCFileUtils.Integration.Commands
 {
-    class SyncWithFileSystemCommand : BaseCommand
+    class OrganizeFilesCommand : BaseCommand
     {
         #region Constructors
 
-        public SyncWithFileSystemCommand(VCFileUtilsPackage package)
-            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDSyncWithFileSystem))
+        public OrganizeFilesCommand(VCFileUtilsPackage package)
+            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDOrganizeFiles))
         {
         }
 
@@ -33,10 +33,17 @@ namespace VCFileUtils.Integration.Commands
             foreach (VCProjectItemWrapper item in selection)
             {
                 if (item is VCFileWrapper)
-                    FilterUtils.SyncWithFileSystem(item as VCFileWrapper);
+                {
+                    FileUtils.OrganizeFile(item as VCFileWrapper);
+                }
 
                 if (item is ContainerWrapper)
-                    FilterUtils.SyncWithFileSystem(item as ContainerWrapper);
+                {
+                    foreach (VCFileWrapper file in (item as ContainerWrapper).GetFilesRecursive())
+                    {
+                        FileUtils.OrganizeFile(file);
+                    }
+                }
             }
         }
 

@@ -56,7 +56,7 @@
     <Compile Include="Helpers\SettingsManager.cs" />
     <Compile Include="VCFileUtilsPackage.cs" />
     <Compile Include="Helpers\SolutionHelper.cs" />
-    <Compile Include="Logic\FilterUtils.cs" />
+    <Compile Include="Logic\FileUtils.cs" />
     <Compile Include="Model\IMovable.cs" />
     <Compile Include="Model\ContainerWrapper.cs" />
     <Compile Include="Model\VCFileWrapper.cs" />
@@ -65,7 +65,7 @@
     <Compile Include="Model\VCProjectWrapper.cs" />
     <Compile Include="Integration\Commands\BaseCommand.cs" />
     <Compile Include="Integration\Commands\SetProjectRootCommand.cs" />
-    <Compile Include="Integration\Commands\SyncWithFileSystemCommand.cs" />
+    <Compile Include="Integration\Commands\OrganizeFilesCommand.cs" />
     <Compile Include="Integration\GuidList.cs" />
     <Compile Include="Integration\PkgCmdIDList.cs" />
     <Compile Include="Model\VCProjectItemWrapper.cs" />

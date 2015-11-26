@@ -16,14 +16,14 @@ namespace VCFileUtils.Model
 
         public VCProjectWrapper ContainingProject => new VCProjectWrapper(VCProjectItem.project);
 
-        public VCProjectItemWrapper Parent
+        public ContainerWrapper Parent
         {
             get
             {
                 if (VCProjectItem.Parent == null)
                     return null;
                 else
-                    return WrapperFactory.FromVCProjectItem(VCProjectItem.Parent);
+                    return (ContainerWrapper)WrapperFactory.FromVCProjectItem(VCProjectItem.Parent);
             }
         }
 

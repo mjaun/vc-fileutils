@@ -3,7 +3,7 @@
   <Metadata>
     <Identity Id="VCFileUtils.reloZid.808f1728-2291-48bf-a389-1030789052cd" Version="1.0" Language="en-US" Publisher="reloZid" />
     <DisplayName>VCFileUtils</DisplayName>
-    <Description xml:space="preserve">A light-weight extension which provides several tools for working with files in VC projects.</Description>
+    <Description xml:space="preserve">Visual Studio extension which organizes files in a VC project.</Description>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[12.0,14.0]" />

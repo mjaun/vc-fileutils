@@ -19,11 +19,7 @@ namespace VCFileUtils.Model
         {
             get
             {
-                string path = FullPath;
-                string root = SettingsManager.GetSettings(ContainingProject).ProjectRoot + "\\";
-
-                Uri uri = new Uri(root);
-                return uri.MakeRelativeUri(new Uri(path)).ToString();
+                return ContainingProject.GetRelativePath(VCFile.FullPath);
             }
         }
 

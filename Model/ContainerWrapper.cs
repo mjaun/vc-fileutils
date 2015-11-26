@@ -14,6 +14,7 @@ namespace VCFileUtils.Model
         protected abstract dynamic _Filters { get; }
 
         protected abstract VCFilter _AddFilter(string name);
+        protected abstract VCFile _AddFile(string path);
 
         public IEnumerable<VCFileWrapper> Files
         {
@@ -21,6 +22,7 @@ namespace VCFileUtils.Model
             {
                 return ((IVCCollection)_Files)
                     .Cast<VCFile>()
+                    .Where(file => VCProjectItem.Parent == file)
                     .Select(file => new VCFileWrapper(file));
             }
         }
@@ -31,6 +33,7 @@ namespace VCFileUtils.Model
             {
                 return ((IVCCollection)_Filters)
                     .Cast<VCFilter>()
+                    .Where(file => VCProjectItem.Parent == file)
                     .Select(filter => new VCFilterWrapper(filter));
             }
         }
@@ -38,6 +41,11 @@ namespace VCFileUtils.Model
         public VCFilterWrapper AddFilter(string name)
         {
             return new VCFilterWrapper(_AddFilter(name));
+        }
+
+        public VCFileWrapper AddFile(string path)
+        {
+            return new VCFileWrapper(_AddFile(path));
         }
 
         public VCFilterWrapper GetFilter(string name, bool create = false)

@@ -5,33 +5,47 @@
 
   <Commands package="GuidVCFileUtilsPackage">
     <Groups>
-      <Group guid="GuidVCFileUtilsCommandSet" id="GroupIDFilterUtils" priority="0x0100">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+      <Group guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" priority="0x0100">
       </Group>
-
-      <Group guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFilterUtilsMain" priority="0x0100">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFilterUtils"/>
+      <Group guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" priority="0x0100">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils"/>
+      </Group>
+      <Group guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsSettings" priority="0x0200">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils"/>
       </Group>
     </Groups>
 
     <Menus>
-      <Menu guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFilterUtils" priority="0x0100" type="Menu">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="GroupIDFilterUtils"/>
+      <Menu guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils" priority="0x0200" type="Menu">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils"/>
         <Strings>
-          <ButtonText>Filter &amp;Utils</ButtonText>
+          <ButtonText>File &amp;Utilities</ButtonText>
         </Strings>
       </Menu>
     </Menus>   
     
     <Buttons>
-      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDSyncWithFileSystem" priority="0x0100" type="Button">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="GroupIDFilterUtils" />
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDShowInExplorer" priority="0x0100" type="Button">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" />
         <Strings>
-          <ButtonText>Sync with File System</ButtonText>
+          <ButtonText>Show in &amp;Explorer</ButtonText>
         </Strings>
       </Button>
-      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDSetProjectRoot" priority="0x0200" type="Button">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="GroupIDFilterUtils" />
+
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDOrganizeFiles" priority="0x0100" type="Button">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
+        <Strings>
+          <ButtonText>&amp;Organize Files</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDAddFilesOrganized" priority="0x0200" type="Button">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
+        <Strings>
+          <ButtonText>&amp;Add Files Organized...</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDSetProjectRoot" priority="0x0100" type="Button">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsSettings" />
         <Strings>
           <ButtonText>Set Project &amp;Root...</ButtonText>
         </Strings>
@@ -39,16 +53,31 @@
     </Buttons>
   </Commands>
 
+  <CommandPlacements>
+    <CommandPlacement guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" priority="0x0200">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+    </CommandPlacement>
+    <CommandPlacement guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" priority="0x0200">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE"/>
+    </CommandPlacement>
+    <CommandPlacement guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" priority="0x0200">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+    </CommandPlacement>
+  </CommandPlacements>
+  
   <Symbols>
     <GuidSymbol name="GuidVCFileUtilsPackage" value="{AD0E4393-9BAE-4B79-81A3-9E648613264C}" />
 
     <GuidSymbol name="GuidVCFileUtilsCommandSet" value="{E35CFF27-48F1-4606-99A6-678C89456042}">
-      <IDSymbol name="GroupIDFilterUtils" value="0x1000" />
-      <IDSymbol name="SubGroupIDFilterUtils" value="0x1010" />
-      <IDSymbol name="SubGroupIDFilterUtilsMain" value="0x1020" />
+      <IDSymbol name="GroupIDFileUtils" value="0x1000" />
+      <IDSymbol name="SubGroupIDFileUtils" value="0x1010" />
+      <IDSymbol name="SubGroupIDFileUtilsMain" value="0x1020" />
+      <IDSymbol name="SubGroupIDFileUtilsSettings" value="0x1030" />
 
       <IDSymbol name="CmdIDSetProjectRoot" value="0x2000" />
-      <IDSymbol name="CmdIDSyncWithFileSystem" value="0x2010" />
+      <IDSymbol name="CmdIDOrganizeFiles" value="0x2010" />
+      <IDSymbol name="CmdIDAddFilesOrganized" value="0x2020" />
+      <IDSymbol name="CmdIDShowInExplorer" value="0x2030" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>
