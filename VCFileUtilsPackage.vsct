@@ -38,12 +38,14 @@
           <ButtonText>&amp;Organize Files</ButtonText>
         </Strings>
       </Button>
+      <!--
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDAddFilesOrganized" priority="0x0200" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
         <Strings>
           <ButtonText>&amp;Add Files Organized...</ButtonText>
         </Strings>
       </Button>
+      -->
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDRemoveEmptyFilters" priority="0x0300" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
         <Strings>
