@@ -11,12 +11,37 @@ namespace VCFileUtils.Model
         {
         }
 
-        protected VCFilter Filter => (VCFilter)VCProjectItem;
+        protected VCFilter Filter 
+        {
+            get
+            {
+                return (VCFilter)VCProjectItem;
+            }
+        }
 
-        protected override dynamic _Files => Filter.Files;
-        protected override dynamic _Filters => Filter.Filters;
+        protected override dynamic _Files 
+        {
+            get
+            {
+                return Filter.Files;
+            }
+        }
 
-        public override string FilePath => Path.Combine(SettingsManager.GetSettings(ContainingProject).ProjectRoot, FilterPath);
+        protected override dynamic _Filters 
+        {
+            get
+            {
+                return Filter.Filters;
+            }
+        }
+
+        public override string FilePath
+        {
+            get
+            {
+                return Path.Combine(SettingsManager.GetSettings(ContainingProject).ProjectRoot, FilterPath);
+            }
+        }
 
         protected override VCFilter _AddFilter(string name)
         {

@@ -18,7 +18,7 @@ namespace VCFileUtils
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
-    [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideMenuResource(1000, 1)]
     [Guid(GuidList.GuidVCFileUtilsPackageString)]
     public sealed class VCFileUtilsPackage : Package
     {
@@ -43,9 +43,21 @@ namespace VCFileUtils
 
         #region Public Integration Properties
 
-        public DTE2 IDE => _ide ?? (_ide = GetService(typeof(SApplicationObject)) as DTE2);
+        public DTE2 IDE
+        {
+            get
+            {
+                return _ide ?? (_ide = GetService(typeof(SApplicationObject)) as DTE2);
+            }
+        }
 
-        public OleMenuCommandService MenuCommandService => _menuCommandService ?? (_menuCommandService = GetService(typeof(IMenuCommandService)) as OleMenuCommandService);
+        public OleMenuCommandService MenuCommandService
+        {
+            get
+            {
+                return _menuCommandService ?? (_menuCommandService = GetService(typeof(IMenuCommandService)) as OleMenuCommandService);
+            }
+        }
 
         #endregion
 

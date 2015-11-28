@@ -12,9 +12,21 @@ namespace VCFileUtils.Model
 
         public VCProjectItem VCProjectItem { get; private set; }
 
-        public string Name => VCProjectItem.ItemName;
+        public string Name 
+        {
+            get
+            {
+                return VCProjectItem.ItemName;
+            }
+        }
 
-        public VCProjectWrapper ContainingProject => new VCProjectWrapper(VCProjectItem.project);
+        public VCProjectWrapper ContainingProject
+        {
+            get
+            {
+                return new VCProjectWrapper(VCProjectItem.project);
+            }
+        }
 
         public ContainerWrapper Parent
         {

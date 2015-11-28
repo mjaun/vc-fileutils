@@ -11,9 +11,21 @@ namespace VCFileUtils.Model
         }
 
 
-        protected VCFile VCFile => (VCFile)VCProjectItem;
+        protected VCFile VCFile 
+        {
+            get
+            {
+                return (VCFile)VCProjectItem;
+            }
+        }
 
-        public override string FilePath => VCFile.FullPath;
+        public override string FilePath
+        {
+            get
+            {
+                return VCFile.FullPath;
+            }
+        }
 
         public string RelativePath
         {

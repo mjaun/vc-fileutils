@@ -11,10 +11,45 @@ namespace VCFileUtils.Model
         {
         }
 
-        protected VCProject Project => (VCProject)VCProjectItem;
+        protected VCProject Project 
+        {
+            get
+            {
+                return (VCProject)VCProjectItem;
+            }
+        }
 
-        protected override dynamic _Files => Project.Files;
-        protected override dynamic _Filters => Project.Filters;
+        protected override dynamic _Files 
+        {
+            get
+            {
+                return Project.Files;
+            }
+        }
+
+        protected override dynamic _Filters 
+        {
+            get
+            {
+                return Project.Filters;
+            }
+        }
+
+        public string ProjectFile
+        {
+            get
+            {
+                return Project.ProjectFile;
+            }
+        }
+
+        public override string FilePath
+        {
+            get
+            {
+                return Project.ProjectFile;
+            }
+        }
 
         protected override VCFilter _AddFilter(string name)
         {
@@ -31,9 +66,6 @@ namespace VCFileUtils.Model
 
             return (VCFile)Project.AddFile(path);
         }
-
-        public string ProjectFile => Project.ProjectFile;
-        public override string FilePath => Project.ProjectFile;
 
         public string MakeRelativePath(string absolutePath)
         {
