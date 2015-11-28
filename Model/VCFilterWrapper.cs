@@ -39,7 +39,7 @@ namespace VCFileUtils.Model
         {
             get
             {
-                return Path.Combine(SettingsManager.GetSettings(ContainingProject).ProjectRoot, FilterPath);
+                return Path.Combine(ContainingProject.GetProjectRoot(), FilterPath);
             }
         }
 

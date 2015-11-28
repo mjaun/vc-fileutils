@@ -67,13 +67,14 @@ namespace VCFileUtils.Model
             return (VCFile)Project.AddFile(path);
         }
 
-        public string MakeRelativePath(string absolutePath)
+        public string GetProjectRoot()
         {
-            string root = SettingsManager.GetSettings(this).ProjectRoot + "\\";
+            string relativeRoot = SettingsManager.GetSettings(this).RelativeProjectRoot;
 
-            Uri uriRoot = new Uri(root);
-            Uri uriPath = new Uri(absolutePath);
-            return uriRoot.MakeRelativeUri(uriPath).ToString();
+            if (String.IsNullOrEmpty(relativeRoot))
+                return null;
+
+            return Path.Combine(Path.GetDirectoryName(ProjectFile), relativeRoot);
         }
 
         public override string ToString()

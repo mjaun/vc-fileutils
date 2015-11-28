@@ -4,6 +4,7 @@ using VCFileUtils.Model;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
+using System;
 
 namespace VCFileUtils.Integration.Commands
 {
@@ -16,8 +17,10 @@ namespace VCFileUtils.Integration.Commands
 
         protected override void OnBeforeQueryStatus()
         {
-            Visible = SolutionHelper.GetSelectedItems(Package).Any();
-            Enabled = true;
+            var selection = SolutionHelper.GetSelectedItems(Package).ToList();
+
+            Visible = selection.Any() && selection.All(item => !(item is VCProjectWrapper));
+            Enabled = selection.All(item => item.ContainingProject.GetProjectRoot() != null);
         }
 
         protected override void OnExecute()

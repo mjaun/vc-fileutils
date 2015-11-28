@@ -13,7 +13,7 @@ namespace VCFileUtils.Helpers
         public static ExtensionSettings GetDefaultSettings(VCProjectWrapper project)
         {
             ExtensionSettings settings = new ExtensionSettings();
-            settings.ProjectRoot = Path.GetDirectoryName(project.ProjectFile);
+            settings.RelativeProjectRoot = null;
             return settings;
         }
 

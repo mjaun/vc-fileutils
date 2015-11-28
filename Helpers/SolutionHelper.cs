@@ -51,7 +51,7 @@ namespace VCFileUtils.Helpers
         public static string GetDirectoryOfSelection(VCFileUtilsPackage package)
         {
             var directories = GetSelectedItems(package)
-                .Select(item => Path.GetDirectoryName(item.FilePath))
+                .Select(item => (item is VCFilterWrapper) ? item.FilePath : Path.GetDirectoryName(item.FilePath))
                 .ToList();
 
             if (directories.Count() == 0)
@@ -75,7 +75,7 @@ namespace VCFileUtils.Helpers
                 return null;
 
             if (selection[0] is VCProjectWrapper)
-                return SettingsManager.GetSettings(selection[0] as VCProjectWrapper).ProjectRoot;
+                return (selection[0] as VCProjectWrapper).GetProjectRoot();
 
             if (selection[0] is VCFilterWrapper)
                 return selection[0].FilePath;

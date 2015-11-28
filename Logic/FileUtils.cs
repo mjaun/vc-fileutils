@@ -24,7 +24,7 @@ namespace VCFileUtils.Logic
 
         public static VCFileWrapper AddFileOrganized(VCProjectWrapper project, string path)
         {
-            string filterPath = project.MakeRelativePath(path);
+            string filterPath = project.GetRelativePathOf(path);
             VCFilterWrapper parent = project.CreateFilterPath(Path.GetDirectoryName(filterPath));
             return parent.AddFile(path);
         }

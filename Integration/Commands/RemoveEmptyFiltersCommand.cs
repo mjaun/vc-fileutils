@@ -20,11 +20,10 @@ namespace VCFileUtils.Integration.Commands
 
         protected override void OnBeforeQueryStatus()
         {
-            var selection = SolutionHelper.GetSelectedItems(Package)
-                .ToList();
+            var selection = SolutionHelper.GetSelectedItems(Package).ToList();
 
-            Visible = SolutionHelper.GetSelectedItems(Package).Any();
-            Enabled = SolutionHelper.GetSelectedItems(Package).Any(item => item is ContainerWrapper);
+            Visible = selection.Any();
+            Enabled = selection.Any(item => item is ContainerWrapper);
         }
 
         protected override void OnExecute()

@@ -31,7 +31,7 @@ namespace VCFileUtils.Model
         {
             get
             {
-                return ContainingProject.MakeRelativePath(VCFile.FullPath);
+                return ContainingProject.GetRelativePathOf(VCFile.FullPath);
             }
         }
 

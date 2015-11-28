@@ -60,6 +60,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\ExtensionSettings.cs" />
+    <Compile Include="Helpers\PathHelper.cs" />
     <Compile Include="Helpers\SettingsManager.cs" />
     <Compile Include="Helpers\SolutionHelper.cs" />
     <Compile Include="Integration\Commands\AddFilesOrganizedCommand.cs" />
