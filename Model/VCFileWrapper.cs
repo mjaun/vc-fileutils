@@ -19,7 +19,7 @@ namespace VCFileUtils.Model
             }
         }
 
-        public override string FilePath
+        public override string FullPath
         {
             get
             {
@@ -31,7 +31,12 @@ namespace VCFileUtils.Model
         {
             get
             {
-                return ContainingProject.GetRelativePathOf(VCFile.FullPath);
+                string projectRoot = ContainingProject.GetProjectRoot();
+
+                if (projectRoot == null)
+                    return null;
+
+                return PathHelper.GetRelativePath(projectRoot, FullPath);
             }
         }
 

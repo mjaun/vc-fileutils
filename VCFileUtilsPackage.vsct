@@ -27,6 +27,7 @@
     <Buttons>
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDShowInExplorer" priority="0x0100" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>Show in &amp;Explorer</ButtonText>
         </Strings>
@@ -34,6 +35,7 @@
 
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDOrganizeFiles" priority="0x0100" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>&amp;Organize Files</ButtonText>
         </Strings>
@@ -41,6 +43,7 @@
       <!--
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDAddFilesOrganized" priority="0x0200" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>&amp;Add Files Organized...</ButtonText>
         </Strings>
@@ -48,12 +51,14 @@
       -->
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDRemoveEmptyFilters" priority="0x0300" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>&amp;Remove Empty Filters</ButtonText>
         </Strings>
       </Button>
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDSetProjectRoot" priority="0x0100" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsSettings" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>Set Project &amp;Root...</ButtonText>
         </Strings>

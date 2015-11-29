@@ -39,7 +39,7 @@ namespace VCFileUtils.Model
             }
         }
 
-        public abstract string FilePath { get; }
+        public abstract string FullPath { get; }
 
         public string FilterPath
         {

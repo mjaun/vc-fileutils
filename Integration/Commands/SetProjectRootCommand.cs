@@ -25,13 +25,14 @@ namespace VCFileUtils.Integration.Commands
             VCProjectWrapper project = SolutionHelper.GetProjectOfSelection(Package);
 
             FolderBrowserDialog dlg = new FolderBrowserDialog();
-            dlg.SelectedPath = Path.GetDirectoryName(project.ProjectFile);
+            dlg.SelectedPath = project.GetProjectDirectory();
             dlg.ShowNewFolderButton = false;
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 ExtensionSettings settings = SettingsManager.GetSettings(project);
-                settings.RelativeProjectRoot = project.GetRelativePathOf(dlg.SelectedPath);
+                string projectDir = project.GetProjectDirectory();
+                settings.RelativeProjectRoot = PathHelper.GetRelativePath(projectDir, dlg.SelectedPath + Path.DirectorySeparatorChar);
                 SettingsManager.SaveSettings(project);
             }
         }

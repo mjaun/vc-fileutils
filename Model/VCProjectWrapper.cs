@@ -43,7 +43,7 @@ namespace VCFileUtils.Model
             }
         }
 
-        public override string FilePath
+        public override string FullPath
         {
             get
             {
@@ -71,10 +71,15 @@ namespace VCFileUtils.Model
         {
             string relativeRoot = SettingsManager.GetSettings(this).RelativeProjectRoot;
 
-            if (String.IsNullOrEmpty(relativeRoot))
+            if (relativeRoot == null)
                 return null;
 
-            return Path.Combine(Path.GetDirectoryName(ProjectFile), relativeRoot);
+            return PathHelper.GetAbsolutePath(GetProjectDirectory(), relativeRoot);
+        }
+
+        public string GetProjectDirectory()
+        {
+            return Path.GetDirectoryName(ProjectFile);
         }
 
         public override string ToString()

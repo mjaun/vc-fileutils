@@ -51,11 +51,11 @@ namespace VCFileUtils.Model
 
         public VCFilterWrapper GetFilter(string name, bool create = false)
         {
-            VCFilterWrapper filter = Filters
-                .FirstOrDefault(f => f.Name == name);
-
-            if (filter != null)
-                return filter;
+            foreach (VCFilterWrapper filter in Filters)
+            {
+                if (filter.Name.ToLower() == name.ToLower())
+                    return filter;
+            }
 
             if (create)
                 return AddFilter(name);

@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.VCProjectEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System;
 
 namespace VCFileUtils.Helpers
 {
@@ -50,8 +51,9 @@ namespace VCFileUtils.Helpers
 
         public static string GetDirectoryOfSelection(VCFileUtilsPackage package)
         {
-            var directories = GetSelectedItems(package)
-                .Select(item => (item is VCFilterWrapper) ? item.FilePath : Path.GetDirectoryName(item.FilePath))
+             var directories = GetSelectedItems(package)
+                .Where(item => item.FullPath != null)
+                .Select(item => (item is VCFilterWrapper) ? item.FullPath : Path.GetDirectoryName(item.FullPath))
                 .ToList();
 
             if (directories.Count() == 0)
@@ -78,19 +80,31 @@ namespace VCFileUtils.Helpers
                 return (selection[0] as VCProjectWrapper).GetProjectRoot();
 
             if (selection[0] is VCFilterWrapper)
-                return selection[0].FilePath;
+                return selection[0].FullPath;
 
             return null;
         }
 
         private static UIHierarchy GetSolutionExplorer(VCFileUtilsPackage package)
         {
-            return package.IDE.ToolWindows.SolutionExplorer;
+            try
+            {
+                return package.IDE.ToolWindows.SolutionExplorer;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
 
         private static IEnumerable<UIHierarchyItem> GetSelectedUIHierarchyItems(VCFileUtilsPackage package)
         {
-            return ((object[])GetSolutionExplorer(package).SelectedItems)
+            UIHierarchy solutionExplorer = GetSolutionExplorer(package);
+
+            if (solutionExplorer == null)
+                return new UIHierarchyItem[0];
+
+            return ((object[])solutionExplorer.SelectedItems)
                 .Cast<UIHierarchyItem>();
         }
     }

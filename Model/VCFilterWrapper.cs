@@ -35,11 +35,16 @@ namespace VCFileUtils.Model
             }
         }
 
-        public override string FilePath
+        public override string FullPath
         {
             get
             {
-                return Path.Combine(ContainingProject.GetProjectRoot(), FilterPath);
+                string projectRoot = ContainingProject.GetProjectRoot();
+
+                if (projectRoot == null)
+                    return null;
+
+                return PathHelper.GetAbsolutePath(projectRoot, FilterPath);
             }
         }
 

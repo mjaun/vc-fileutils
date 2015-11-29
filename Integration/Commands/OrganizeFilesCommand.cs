@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
 using System;
+using System.IO;
 
 namespace VCFileUtils.Integration.Commands
 {

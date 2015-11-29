@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using VCFileUtils.Helpers;
 
 namespace VCFileUtils.Logic
 {
@@ -9,6 +10,9 @@ namespace VCFileUtils.Logic
     {
         public static void OrganizeFile(VCFileWrapper file)
         {
+            if (file.RelativePath == null)
+                throw new InvalidOperationException("project root not set");
+
             VCProjectWrapper project = file.ContainingProject;
             string filterPath = Path.GetDirectoryName(file.RelativePath);
 
@@ -24,7 +28,12 @@ namespace VCFileUtils.Logic
 
         public static VCFileWrapper AddFileOrganized(VCProjectWrapper project, string path)
         {
-            string filterPath = project.GetRelativePathOf(path);
+            string projectRoot = project.GetProjectRoot();
+
+            if (projectRoot == null)
+                throw new InvalidOperationException("project root not set");
+
+            string filterPath = PathHelper.GetRelativePath(project.GetProjectRoot(), path);
             VCFilterWrapper parent = project.CreateFilterPath(Path.GetDirectoryName(filterPath));
             return parent.AddFile(path);
         }
@@ -32,7 +41,7 @@ namespace VCFileUtils.Logic
         public static VCFileWrapper ReAddFile(VCFileWrapper file)
         {
             ContainerWrapper parent = file.Parent;
-            string path = file.FilePath;
+            string path = file.FullPath;
             file.Remove();
             return parent.AddFile(path);
         }
