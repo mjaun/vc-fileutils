@@ -22,7 +22,7 @@ namespace VCFileUtils.Integration.Commands
         {
             var selection = SolutionHelper.GetSelectedItems(Package).ToList();
 
-            Visible = selection.Any();
+            Visible = selection.Any() && selection.All(item => !(item is VCProjectWrapper));
             Enabled = selection.Any(item => item is ContainerWrapper);
         }
 
