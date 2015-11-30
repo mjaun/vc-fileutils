@@ -7,10 +7,10 @@
     <Groups>
       <Group guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" priority="0x0100">
       </Group>
-      <Group guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" priority="0x0100">
+      <Group guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils1" priority="0x0100">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils"/>
       </Group>
-      <Group guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsSettings" priority="0x0200">
+      <Group guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils2" priority="0x0200">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils"/>
       </Group>
     </Groups>
@@ -34,33 +34,40 @@
       </Button>
 
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDOrganizeFiles" priority="0x0100" type="Button">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils1" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>&amp;Organize Files</ButtonText>
         </Strings>
       </Button>
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDSetProjectRoot" priority="0x0200" type="Button">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils1" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Set Project &amp;Root...</ButtonText>
+        </Strings>
+      </Button>
       <!--
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDAddFilesOrganized" priority="0x0200" type="Button">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils1" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>&amp;Add Files Organized...</ButtonText>
         </Strings>
       </Button>
       -->
-      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDRemoveEmptyFilters" priority="0x0300" type="Button">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsMain" />
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDRemoveEmptyFilters" priority="0x0100" type="Button">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils2" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>&amp;Remove Empty Filters</ButtonText>
         </Strings>
       </Button>
-      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDSetProjectRoot" priority="0x0100" type="Button">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtilsSettings" />
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDReAddFiles" priority="0x0200" type="Button">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils2" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Set Project &amp;Root...</ButtonText>
+          <ButtonText>Re-&amp;Add Files</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -84,14 +91,14 @@
     <GuidSymbol name="GuidVCFileUtilsCommandSet" value="{E35CFF27-48F1-4606-99A6-678C89456042}">
       <IDSymbol name="GroupIDFileUtils" value="0x1000" />
       <IDSymbol name="SubGroupIDFileUtils" value="0x1010" />
-      <IDSymbol name="SubGroupIDFileUtilsMain" value="0x1020" />
-      <IDSymbol name="SubGroupIDFileUtilsSettings" value="0x1030" />
+      <IDSymbol name="SubGroupIDFileUtils1" value="0x1020" />
+      <IDSymbol name="SubGroupIDFileUtils2" value="0x1030" />
 
       <IDSymbol name="CmdIDSetProjectRoot" value="0x2000" />
       <IDSymbol name="CmdIDOrganizeFiles" value="0x2010" />
-      <IDSymbol name="CmdIDAddFilesOrganized" value="0x2020" />
-      <IDSymbol name="CmdIDShowInExplorer" value="0x2030" />
-      <IDSymbol name="CmdIDRemoveEmptyFilters" value="0x2040" />
+      <IDSymbol name="CmdIDShowInExplorer" value="0x2020" />
+      <IDSymbol name="CmdIDRemoveEmptyFilters" value="0x2030" />
+      <IDSymbol name="CmdIDReAddFiles" value="0x2040" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

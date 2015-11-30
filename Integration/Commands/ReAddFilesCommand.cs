@@ -1,18 +1,15 @@
-﻿using VCFileUtils.Helpers;
-using VCFileUtils.Logic;
-using VCFileUtils.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
-using System;
-using System.IO;
+using VCFileUtils.Helpers;
+using VCFileUtils.Model;
 
 namespace VCFileUtils.Integration.Commands
 {
-    class OrganizeFilesCommand : BaseCommand
+    class ReAddFilesCommand : BaseCommand
     {
-        public OrganizeFilesCommand(VCFileUtilsPackage package)
-            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDOrganizeFiles))
+        public ReAddFilesCommand(VCFileUtilsPackage package)
+            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDReAddFiles))
         {
         }
 
@@ -21,7 +18,7 @@ namespace VCFileUtils.Integration.Commands
             var selection = SolutionHelper.GetSelectedItems(Package).ToList();
 
             Visible = selection.Any() && selection.All(item => !(item is VCProjectWrapper));
-            Enabled = selection.All(item => item.ContainingProject.GetProjectRoot() != null);
+            Enabled = SolutionHelper.GetSelectedFiles(Package).Any();
         }
 
         protected override void OnExecute()
@@ -30,7 +27,11 @@ namespace VCFileUtils.Integration.Commands
 
             foreach (var file in selectedFiles)
             {
-                FileUtils.OrganizeFile(file);
+                var path = file.FullPath;
+                var parent = file.Parent;
+
+                file.Remove();
+                parent.AddFile(path);
             }
         }
     }

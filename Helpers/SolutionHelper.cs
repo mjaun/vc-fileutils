@@ -12,7 +12,7 @@ namespace VCFileUtils.Helpers
     {
         public static IEnumerable<VCProjectItemWrapper> GetSelectedItems(VCFileUtilsPackage package)
         {
-            foreach (UIHierarchyItem item in GetSelectedUIHierarchyItems(package))
+            foreach (var item in GetSelectedUIHierarchyItems(package))
             {
                 VCProjectItem vcProjectItem = null;
 
@@ -32,6 +32,19 @@ namespace VCFileUtils.Helpers
             return GetSelectedItems(package)
                 .Where(item => item is VCProjectWrapper)
                 .Cast<VCProjectWrapper>();
+        }
+
+        public static IEnumerable<VCFileWrapper> GetSelectedFiles(VCFileUtilsPackage package)
+        {
+            foreach (var item in GetSelectedItems(package))
+            {
+                if (item is VCFileWrapper)
+                    yield return (item as VCFileWrapper);
+
+                if (item is ContainerWrapper)
+                    foreach (var child in (item as ContainerWrapper).GetFilesRecursive())
+                        yield return child;
+            }
         }
 
         public static VCProjectWrapper GetProjectOfSelection(VCFileUtilsPackage package)
