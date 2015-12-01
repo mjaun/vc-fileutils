@@ -25,14 +25,6 @@
     </Menus>   
     
     <Buttons>
-      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDShowInExplorer" priority="0x0100" type="Button">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Show in &amp;Explorer</ButtonText>
-        </Strings>
-      </Button>
-
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDOrganizeFiles" priority="0x0100" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils1" />
         <CommandFlag>DynamicVisibility</CommandFlag>
@@ -47,15 +39,6 @@
           <ButtonText>Set Project &amp;Root...</ButtonText>
         </Strings>
       </Button>
-      <!--
-      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDAddFilesOrganized" priority="0x0200" type="Button">
-        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils1" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>&amp;Add Files Organized...</ButtonText>
-        </Strings>
-      </Button>
-      -->
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDRemoveEmptyFilters" priority="0x0100" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils2" />
         <CommandFlag>DynamicVisibility</CommandFlag>
@@ -96,7 +79,6 @@
 
       <IDSymbol name="CmdIDSetProjectRoot" value="0x2000" />
       <IDSymbol name="CmdIDOrganizeFiles" value="0x2010" />
-      <IDSymbol name="CmdIDShowInExplorer" value="0x2020" />
       <IDSymbol name="CmdIDRemoveEmptyFilters" value="0x2030" />
       <IDSymbol name="CmdIDReAddFiles" value="0x2040" />
     </GuidSymbol>

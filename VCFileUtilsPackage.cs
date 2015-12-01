@@ -82,7 +82,6 @@ namespace VCFileUtils
             {
                 menuCommandService.AddCommand(new OrganizeFilesCommand(this));
                 menuCommandService.AddCommand(new SetProjectRootCommand(this));
-                menuCommandService.AddCommand(new ShowInExplorerCommand(this));
                 menuCommandService.AddCommand(new RemoveEmptyFiltersCommand(this));
                 menuCommandService.AddCommand(new ReAddFilesCommand(this));
             }

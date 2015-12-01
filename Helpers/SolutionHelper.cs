@@ -62,25 +62,6 @@ namespace VCFileUtils.Helpers
             return projects[0];
         }
 
-        public static string GetDirectoryOfSelection(VCFileUtilsPackage package)
-        {
-             var directories = GetSelectedItems(package)
-                .Where(item => item.FullPath != null)
-                .Select(item => (item is VCFilterWrapper) ? item.FullPath : Path.GetDirectoryName(item.FullPath))
-                .ToList();
-
-            if (directories.Count() == 0)
-                return null;
-
-            if (directories.Any(dir => dir != directories[0]))
-                return null;
-
-            if (!Directory.Exists(directories[0]))
-                return null;
-
-            return directories[0];
-        }
-
         public static string GetSelectedDirectory(VCFileUtilsPackage package)
         {
             var selection = GetSelectedItems(package)

@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
     <Identity Id="VCFileUtils.reloZid.808f1728-2291-48bf-a389-1030789052cd" Version="1.0" Language="en-US" Publisher="reloZid" />
-    <DisplayName>VC File Utililities</DisplayName>
+    <DisplayName>VC File Utilities</DisplayName>
     <Description xml:space="preserve">Visual Studio extension which organizes files in a VC project.</Description>
   </Metadata>
   <Installation>
