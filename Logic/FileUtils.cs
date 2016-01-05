@@ -3,12 +3,13 @@ using System;
 using System.IO;
 using System.Linq;
 using VCFileUtils.Helpers;
+using System.Windows.Forms;
 
 namespace VCFileUtils.Logic
 {
     static class FileUtils
     {
-        public static void OrganizeFile(VCFileWrapper file)
+        public static void OrganizeFileInProject(VCFileWrapper file)
         {
             if (file.RelativePath == null)
                 throw new InvalidOperationException("project root not set");
@@ -26,18 +27,6 @@ namespace VCFileUtils.Logic
                 file.Move(newParent);
         }
 
-        public static VCFileWrapper AddFileOrganized(VCProjectWrapper project, string path)
-        {
-            string projectRoot = project.GetProjectRoot();
-
-            if (projectRoot == null)
-                throw new InvalidOperationException("project root not set");
-
-            string filterPath = PathHelper.GetRelativePath(project.GetProjectRoot(), path);
-            VCFilterWrapper parent = project.CreateFilterPath(Path.GetDirectoryName(filterPath));
-            return parent.AddFile(path);
-        }
-
         public static VCFileWrapper ReAddFile(VCFileWrapper file)
         {
             ContainerWrapper parent = file.Parent;
@@ -53,6 +42,33 @@ namespace VCFileUtils.Logic
 
             if (!container.Filters.Any() && !container.Files.Any() && container is VCFilterWrapper)
                 (container as VCFilterWrapper).Remove();
+        }
+
+        public static void OrganizeFileOnDisk(VCFileWrapper file)
+        {
+            string root = file.ContainingProject.GetProjectRoot();
+
+            if (root == null)
+                throw new InvalidOperationException("project root not set");
+
+            string filePath = PathHelper.GetAbsolutePath(root, file.FilterPath);
+
+            if (filePath == file.FullPath)
+                return;
+
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                File.Move(file.FullPath, filePath);
+
+                ContainerWrapper parent = file.Parent;
+                file.Remove();
+                parent.AddFile(filePath);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Could not move file: " + e.Message, "VC File Utilities", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

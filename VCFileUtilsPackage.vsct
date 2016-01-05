@@ -25,18 +25,25 @@
     </Menus>   
     
     <Buttons>
-      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDOrganizeFiles" priority="0x0100" type="Button">
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDOrganizeInProject" priority="0x0100" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils1" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>&amp;Organize Files</ButtonText>
+          <ButtonText>Organize &amp;Files in Project</ButtonText>
         </Strings>
       </Button>
-      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDSetProjectRoot" priority="0x0200" type="Button">
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDOrganizeOnDisk" priority="0x0200" type="Button">
         <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils1" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Set Project &amp;Root...</ButtonText>
+          <ButtonText>Organize Files on &amp;Disk</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDSetProjectRoot" priority="0x0300" type="Button">
+        <Parent guid="GuidVCFileUtilsCommandSet" id="SubGroupIDFileUtils1" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Set &amp;Project Root...</ButtonText>
         </Strings>
       </Button>
       <Button guid="GuidVCFileUtilsCommandSet" id="CmdIDRemoveEmptyFilters" priority="0x0100" type="Button">
@@ -78,9 +85,10 @@
       <IDSymbol name="SubGroupIDFileUtils2" value="0x1030" />
 
       <IDSymbol name="CmdIDSetProjectRoot" value="0x2000" />
-      <IDSymbol name="CmdIDOrganizeFiles" value="0x2010" />
+      <IDSymbol name="CmdIDOrganizeInProject" value="0x2010" />
       <IDSymbol name="CmdIDRemoveEmptyFilters" value="0x2030" />
       <IDSymbol name="CmdIDReAddFiles" value="0x2040" />
+      <IDSymbol name="CmdIDOrganizeOnDisk" value="0x2050" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

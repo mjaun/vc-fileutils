@@ -70,7 +70,8 @@
     <Compile Include="Helpers\SettingsManager.cs" />
     <Compile Include="Helpers\SolutionHelper.cs" />
     <Compile Include="Integration\Commands\BaseCommand.cs" />
-    <Compile Include="Integration\Commands\OrganizeFilesCommand.cs" />
+    <Compile Include="Integration\Commands\OrganizeOnDiskCommand.cs" />
+    <Compile Include="Integration\Commands\OrganizeInProjectCommand.cs" />
     <Compile Include="Integration\Commands\ReAddFilesCommand.cs" />
     <Compile Include="Integration\Commands\RemoveEmptyFiltersCommand.cs" />
     <Compile Include="Integration\Commands\SetProjectRootCommand.cs" />
@@ -122,6 +123,7 @@
     <Content Include="Resources\VCFileUtilsPackage.ico" />
     <VSCTCompile Include="VCFileUtilsPackage.vsct">
       <ResourceName>1000</ResourceName>
+      <SubType>Designer</SubType>
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>

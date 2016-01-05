@@ -9,10 +9,10 @@ using System.IO;
 
 namespace VCFileUtils.Integration.Commands
 {
-    class OrganizeFilesCommand : BaseCommand
+    class OrganizeInProjectCommand : BaseCommand
     {
-        public OrganizeFilesCommand(VCFileUtilsPackage package)
-            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDOrganizeFiles))
+        public OrganizeInProjectCommand(VCFileUtilsPackage package)
+            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDOrganizeInProject))
         {
         }
 
@@ -30,7 +30,7 @@ namespace VCFileUtils.Integration.Commands
 
             foreach (var file in selectedFiles)
             {
-                FileUtils.OrganizeFile(file);
+                FileUtils.OrganizeFileInProject(file);
             }
         }
     }

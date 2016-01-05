@@ -80,10 +80,11 @@ namespace VCFileUtils
 
             if (menuCommandService != null)
             {
-                menuCommandService.AddCommand(new OrganizeFilesCommand(this));
+                menuCommandService.AddCommand(new OrganizeInProjectCommand(this));
                 menuCommandService.AddCommand(new SetProjectRootCommand(this));
                 menuCommandService.AddCommand(new RemoveEmptyFiltersCommand(this));
                 menuCommandService.AddCommand(new ReAddFilesCommand(this));
+                menuCommandService.AddCommand(new OrganizeOnDiskCommand(this));
             }
         }
 

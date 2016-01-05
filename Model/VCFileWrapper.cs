@@ -52,5 +52,11 @@ namespace VCFileUtils.Model
         {
             VCFile.Remove();
         }
+
+        public void SetFullPath(string path)
+        {
+            // This actually specifies the associated file
+            VCFile.AddFile(path);
+        }
     }
 }
