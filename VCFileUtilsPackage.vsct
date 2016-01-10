@@ -65,9 +65,6 @@
 
   <CommandPlacements>
     <CommandPlacement guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" priority="0x0200">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
-    </CommandPlacement>
-    <CommandPlacement guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" priority="0x0200">
       <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE"/>
     </CommandPlacement>
     <CommandPlacement guid="GuidVCFileUtilsCommandSet" id="GroupIDFileUtils" priority="0x0200">
