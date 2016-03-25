@@ -16,7 +16,8 @@ namespace VCFileUtils.Helpers
 
             Uri uriRoot = new Uri(root);
             Uri uriPath = new Uri(pathAbs);
-            return uriRoot.MakeRelativeUri(uriPath).ToString();
+            Uri uriRelative = uriRoot.MakeRelativeUri(uriPath);
+            return Uri.UnescapeDataString(uriRelative.ToString());
         }
 
         public static string GetAbsolutePath(string root, string pathRel)
