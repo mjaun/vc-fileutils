@@ -1,10 +1,4 @@
-﻿//------------------------------------------------------------------------------
-// <copyright file="VCFileUtilsPackage.cs" company="Company">
-//     Copyright (c) Company.  All rights reserved.
-// </copyright>
-//------------------------------------------------------------------------------
-
-using EnvDTE80;
+﻿using EnvDTE80;
 using VCFileUtils.Integration;
 using VCFileUtils.Integration.Commands;
 using Microsoft.VisualStudio.Shell;
