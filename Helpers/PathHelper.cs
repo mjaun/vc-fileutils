@@ -27,7 +27,8 @@ namespace VCFileUtils.Helpers
 
             UriBuilder builder = new UriBuilder(root);
             builder.Path += pathRel;
-            return builder.Uri.AbsolutePath.Replace('/', Path.DirectorySeparatorChar);
+            string absolutePath = Uri.UnescapeDataString(builder.Uri.AbsolutePath);
+            return absolutePath.Replace('/', Path.DirectorySeparatorChar);
         }
     }
 }
