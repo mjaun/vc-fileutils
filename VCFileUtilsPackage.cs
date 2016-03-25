@@ -19,7 +19,7 @@ namespace VCFileUtils
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [ProvideMenuResource(1000, 1)]
-    [Guid(GuidList.GuidVCFileUtilsPackageString)]
+    [Guid(GuidList.GuidPackageString)]
     public sealed class VCFileUtilsPackage : Package
     {
         #region Fields

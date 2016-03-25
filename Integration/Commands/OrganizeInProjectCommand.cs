@@ -12,7 +12,7 @@ namespace VCFileUtils.Integration.Commands
     class OrganizeInProjectCommand : BaseCommand
     {
         public OrganizeInProjectCommand(VCFileUtilsPackage package)
-            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDOrganizeInProject))
+            : base(package, new CommandID(GuidList.GuidCommandSet, (int)CmdIDList.CmdIDOrganizeInProject))
         {
         }
 

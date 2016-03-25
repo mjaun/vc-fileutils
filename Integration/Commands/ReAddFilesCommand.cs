@@ -9,7 +9,7 @@ namespace VCFileUtils.Integration.Commands
     class ReAddFilesCommand : BaseCommand
     {
         public ReAddFilesCommand(VCFileUtilsPackage package)
-            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDReAddFiles))
+            : base(package, new CommandID(GuidList.GuidCommandSet, (int)CmdIDList.CmdIDReAddFiles))
         {
         }
 

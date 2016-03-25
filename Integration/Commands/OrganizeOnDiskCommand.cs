@@ -12,7 +12,7 @@ namespace VCFileUtils.Integration.Commands
     class OrganizeOnDiskCommand : BaseCommand
     {
         public OrganizeOnDiskCommand(VCFileUtilsPackage package)
-            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDOrganizeOnDisk))
+            : base(package, new CommandID(GuidList.GuidCommandSet, (int)CmdIDList.CmdIDOrganizeOnDisk))
         {
         }
 

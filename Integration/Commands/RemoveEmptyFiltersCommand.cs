@@ -13,7 +13,7 @@ namespace VCFileUtils.Integration.Commands
     class RemoveEmptyFiltersCommand : BaseCommand
     {
         public RemoveEmptyFiltersCommand(VCFileUtilsPackage package)
-            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDRemoveEmptyFilters))
+            : base(package, new CommandID(GuidList.GuidCommandSet, (int)CmdIDList.CmdIDRemoveEmptyFilters))
         {
 
         }

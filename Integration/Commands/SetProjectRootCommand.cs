@@ -9,7 +9,7 @@ namespace VCFileUtils.Integration.Commands
     class SetProjectRootCommand : BaseCommand
     {
         public SetProjectRootCommand(VCFileUtilsPackage package)
-            : base(package, new CommandID(GuidList.GuidVCFileUtilsCommandSet, (int)PkgCmdIDList.CmdIDSetProjectRoot))
+            : base(package, new CommandID(GuidList.GuidCommandSet, (int)CmdIDList.CmdIDSetProjectRoot))
         {
 
         }
