@@ -1,9 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCFileUtils_VS2017", "vs2017\VCFileUtils_VS2017.csproj", "{1AD824E7-D30E-4277-B059-9A8D95FC44FA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47A91C84-AF83-41A8-9A17-D0C150264F34} = {47A91C84-AF83-41A8-9A17-D0C150264F34}
+		{F4B730EB-2151-4C7C-86F1-4BA8D03ECE06} = {F4B730EB-2151-4C7C-86F1-4BA8D03ECE06}
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCFileUtils_VS2015", "vs2015\VCFileUtils_VS2015.csproj", "{F4B730EB-2151-4C7C-86F1-4BA8D03ECE06}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47A91C84-AF83-41A8-9A17-D0C150264F34} = {47A91C84-AF83-41A8-9A17-D0C150264F34}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCFileUtils_VS2013", "vs2013\VCFileUtils_VS2013.csproj", "{47A91C84-AF83-41A8-9A17-D0C150264F34}"
 EndProject
@@ -13,6 +22,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AD824E7-D30E-4277-B059-9A8D95FC44FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AD824E7-D30E-4277-B059-9A8D95FC44FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AD824E7-D30E-4277-B059-9A8D95FC44FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AD824E7-D30E-4277-B059-9A8D95FC44FA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F4B730EB-2151-4C7C-86F1-4BA8D03ECE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F4B730EB-2151-4C7C-86F1-4BA8D03ECE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4B730EB-2151-4C7C-86F1-4BA8D03ECE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
