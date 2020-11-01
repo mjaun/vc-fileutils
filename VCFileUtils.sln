@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCFileUtils_VS2017", "vs2017\VCFileUtils_VS2017.csproj", "{1AD824E7-D30E-4277-B059-9A8D95FC44FA}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCFileUtils_VS2015", "vs201
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCFileUtils_VS2013", "vs2013\VCFileUtils_VS2013.csproj", "{47A91C84-AF83-41A8-9A17-D0C150264F34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCFileUtils_VS2019", "vs2019\VCFileUtils_VS2019.csproj", "{716866D5-18F9-48B8-85DC-A96971AAAD96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,10 @@ Global
 		{47A91C84-AF83-41A8-9A17-D0C150264F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47A91C84-AF83-41A8-9A17-D0C150264F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47A91C84-AF83-41A8-9A17-D0C150264F34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{716866D5-18F9-48B8-85DC-A96971AAAD96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{716866D5-18F9-48B8-85DC-A96971AAAD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{716866D5-18F9-48B8-85DC-A96971AAAD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{716866D5-18F9-48B8-85DC-A96971AAAD96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

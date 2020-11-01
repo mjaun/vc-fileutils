@@ -6,16 +6,17 @@ using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
-
+using System.Threading;
+using System.Threading.Tasks;
+using Task = System.Threading.Tasks.Task;
 namespace VCFileUtils
 {
-    [PackageRegistration(UseManagedResourcesOnly = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
-    [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
+    [ProvideAutoLoad(UIContextGuids80.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideMenuResource(1000, 1)]
     [Guid(GuidList.GuidPackageString)]
-    public sealed class VCFileUtilsPackage : Package
-    {
+    public sealed class VCFileUtilsPackage : AsyncPackage {
         #region Fields
 
         private DTE2 _ide;
@@ -57,8 +58,10 @@ namespace VCFileUtils
 
         #region Package Members
 
-        protected override void Initialize()
-        {
+        protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress) {
+
+            //await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken); // Maybe?
+
             base.Initialize();
 
             RegisterCommands();
